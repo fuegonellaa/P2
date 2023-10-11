@@ -1,21 +1,21 @@
-// Universidad de La Laguna
-// Escuela Superior de Ingeniería y Tecnología
-// Grado en Ingeniería Informática
-// Computabilidad y Algoritmia
-// 2º de Carrera
-// Práctica 2: La Criba de Erathostenes
-// Referencia:
+// University of La Laguna
+// School of Engineering and Technology
+// Bachelor's Degree in Computer Engineering
+// Computability and Algorithmics
+// 2nd Year
+// Practice 2: The Sieve of Eratosthenes
+// Reference:
 // https://github.com/fsande/CyA-P02-Eratosthenes/blob/master/Eratosthenes.md
-// Autora: Antonella Sofía García Álvarez
-// correo institucional: alu0101227610@ull.edu.es
-// Archivo actual: Main principal .cc
+// Author: Antonella Sofía García Álvarez
+// Institutional email: alu0101227610@ull.edu.es
+// Current file: Main principal .cc
 
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
 
 void Write(std::ostream &os, std::vector<std::vector<int>> &Primes) {
-  os << "Números primos:" << std::endl;
+  os << "Prime Numbers:" << std::endl;
   for(unsigned i=0; i < Primes.size(); i++) {
     os << Primes.at(i).at(0);
 
@@ -31,7 +31,7 @@ void Write(std::ostream &os, std::vector<std::vector<int>> &Primes) {
 }
 
 
-//algo de que va
+// Explanation of what the algorithm does
 void Clean(std::vector<std::vector<int>> &Primes) {
   for(std::vector<std::vector<int>>::iterator it = Primes.begin(); it != Primes.end(); std::advance(it,1)) {
     if(it->at(1) == 0) {
@@ -51,7 +51,7 @@ void Remove(std::vector<std::vector<int>> &Primes, unsigned pos) {
 void Sieve(std::vector<std::vector<int>> &Primes) {
   Primes.at(0).at(1) = 0;
 
-  for(unsigned i = 1; i < Primes.size(); i++) {               // aqui i se puede llamar actual_number
+  for(unsigned i = 1; i < Primes.size(); i++) {               // here, you can call 'i' as 'current_number'
     if(Primes.at(i).at(1) == 1) {
       Remove(Primes, i + 1);
     }
@@ -76,5 +76,5 @@ int main(int argc, char* argv[]) {
   }
   Sieve(Primes);
   Clean(Primes);
-  Write(std::cout,Primes);
+  Write(std::cout, Primes);
 }
